@@ -44,6 +44,7 @@ def call_ollama(prompt: str, model: str) -> str:
         "model": model,
         "prompt": prompt,
         "stream": False,
+        "think": False,
         "format": "json",
         "options": {"num_gpu": 999, "temperature": 0.9},
     }).encode()
@@ -124,10 +125,13 @@ def pick_categories(categories: dict) -> list[str]:
 
 
 def run_category(template: str, categories: dict, cat_key: str, model: str,
-                 n: int, parallel: int, out_path: Path) -> int:
+                 n: int, parallel: int, round_size: int, out_path: Path) -> int:
     cat = categories[cat_key]
     total = 0
     batches = [min(BATCH_SIZE, n - i) for i in range(0, n, BATCH_SIZE)]
+    # ponytail: แบ่งเป็นรอบๆ (round_size ประโยค/รอบ) เซฟทุก batch ไม่รอครบ n
+    per_round = max(1, round_size // BATCH_SIZE)
+    rounds = [batches[i:i + per_round] for i in range(0, len(batches), per_round)]
 
     def do_batch(size: int, attempt: int) -> list[str]:
         seed = ", ".join(random.sample(cat["style_hints"],
@@ -137,28 +141,32 @@ def run_category(template: str, categories: dict, cat_key: str, model: str,
         return parse_sentences(call_ollama(prompt, model))
 
     gpu_checked = False
+    attempt = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=parallel) as pool:
-        futures = {pool.submit(do_batch, size, i): size
-                   for i, size in enumerate(batches)}
-        for fut in concurrent.futures.as_completed(futures):
-            try:
-                sentences = fut.result()
-            except Exception as e:
-                print(f"  batch ล้มเหลว: {e} — ข้าม")
-                continue
-            if not gpu_checked:
-                ps = check_gpu(model)
-                if "100% GPU" not in ps and ps:
-                    if "CPU" in ps and input(
-                            "โมเดลรันบน CPU! รันต่อ? (y/n): ").lower() != "y":
-                        sys.exit("หยุดตามคำขอผู้ใช้")
-                gpu_checked = True
-            with out_path.open("a", encoding="utf-8") as f:
-                for s in sentences:
-                    f.write(json.dumps({"text": s, "category": cat_key},
-                                       ensure_ascii=False) + "\n")
-            total += len(sentences)
-            print(f"  [{cat_key}] +{len(sentences)} ประโยค (รวม {total}/{n})")
+        for r, round_batches in enumerate(rounds, 1):
+            futures = {pool.submit(do_batch, size, attempt + i): size
+                       for i, size in enumerate(round_batches)}
+            attempt += len(round_batches)
+            for fut in concurrent.futures.as_completed(futures):
+                try:
+                    sentences = fut.result()
+                except Exception as e:
+                    print(f"  batch ล้มเหลว: {e} — ข้าม")
+                    continue
+                if not gpu_checked:
+                    ps = check_gpu(model)
+                    if "100% GPU" not in ps and ps:
+                        if "CPU" in ps and input(
+                                "โมเดลรันบน CPU! รันต่อ? (y/n): ").lower() != "y":
+                            sys.exit("หยุดตามคำขอผู้ใช้")
+                    gpu_checked = True
+                with out_path.open("a", encoding="utf-8") as f:
+                    for s in sentences:
+                        f.write(json.dumps({"text": s, "category": cat_key},
+                                           ensure_ascii=False) + "\n")
+                total += len(sentences)
+                print(f"  [{cat_key}] +{len(sentences)} ประโยค (รวม {total}/{n})")
+            print(f"  [{cat_key}] จบรอบ {r}/{len(rounds)} — เซฟแล้วทั้งหมด {total} ประโยค")
     return total
 
 
@@ -211,19 +219,19 @@ def main() -> None:
         keys = pick_categories(categories)
         n = ask_int("จำนวนประโยคต่อหมวด", DEFAULT_N)
         parallel = ask_int("จำนวน parallel request", DEFAULT_PARALLEL)
+        round_size = ask_int("ประโยคต่อรอบ (เซฟทุก batch ในรอบ)", 100)
         out_path = Path(ask_str("ไฟล์ output", DEFAULT_OUT))
 
         print(f"\nสรุป: model={model} หมวด={','.join(keys)} n={n}/หมวด "
-              f"parallel={parallel} out={out_path}")
+              f"parallel={parallel} round={round_size} out={out_path}")
         if input("เริ่ม generate? (y/n): ").strip().lower() != "y":
             continue
 
         out_path.parent.mkdir(parents=True, exist_ok=True)
         for k in keys:
             grand += run_category(template, categories, k, model, n,
-                                  parallel, out_path)
-        if input("ทำหมวดอื่นต่อไหม? (y/n): ").strip().lower() != "y":
-            break
+                                  parallel, round_size, out_path)
+        break
     print(f"\nเสร็จสิ้น รวม {grand} ประโยค")
 
 

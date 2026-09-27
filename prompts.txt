@@ -1,19 +1,19 @@
-คุณคือผู้เชี่ยวชาญด้านการตรวจสอบเนื้อหาโซเชียลมีเดียไทย กำลังสร้างข้อมูลตัวอย่าง (synthetic data) เพื่อใช้ฝึกโมเดลจำแนกเนื้อหา
+You are an expert in Thai social media content moderation, generating synthetic data to train a content classification model.
 
-หมวด: {category_name}
+Category: {category_name}
 
-เกณฑ์ที่ประโยคต้องเข้าข่าย:
+Criteria the sentences must match:
 {rules}
 
-ตัวอย่างประโยคที่เข้าข่าย:
+Example sentences that qualify:
 {examples}
 
-จงเขียนโพสต์โซเชียลมีเดียภาษาไทยจำนวน {n} ประโยค ที่เข้าข่ายหมวดนี้อย่างชัดเจน
+Write {n} Thai social media posts that clearly fit this category.
 
-ข้อกำหนด:
-- สไตล์ควรหลากหลายและอยู่ในแนว: {seed}
-- เหมือนโพสต์จริงบนโซเชียลมีเดีย (สั้น กระชับ มีอีโมจิหรือแฮชแท็กได้บ้าง)
-- ต้องเข้าข่ายเกณฑ์ข้างต้นทุกประโยค
-- ห้ามซ้ำกับตัวอย่างและห้ามซ้ำกันเอง
+Requirements:
+- Vary the style, staying within this direction: {seed}
+- Make them look like real social media posts (short, punchy, some emojis or hashtags are fine)
+- Every sentence must meet the criteria above
+- Do not repeat the examples, and no duplicates among themselves
 
-ตอบเป็น JSON array ของ string เท่านั้น ไม่ต้องมีคำอธิบายอื่น:
+Respond with a JSON array of strings only, no other explanation:
