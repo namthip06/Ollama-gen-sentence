@@ -19,6 +19,12 @@ DEFAULT_OUT = "data/synthetic.jsonl"
 BATCH_SIZE = 10
 DEFAULT_N = 20
 DEFAULT_PARALLEL = 2
+DEFAULT_EXAMPLES = 5
+
+
+def load_examples(cat: dict, k: int) -> list[str]:
+    """สุ่มตัวอย่างประโยค k ประโยคจาก examples ใน categories.json"""
+    return random.sample(cat["examples"], k=min(k, len(cat["examples"])))
 
 
 def load_categories(path: Path) -> dict:
@@ -29,11 +35,11 @@ def load_template(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def build_prompt(template: str, cat: dict, seed: str, n: int) -> str:
+def build_prompt(template: str, cat: dict, seed: str, n: int, examples: list[str]) -> str:
     return template.format(
         category_name=cat["name"],
         rules=cat["rules"],
-        examples="\n".join("- " + e for e in cat["examples"]),
+        examples="\n".join("- " + e for e in examples),
         seed=seed,
         n=n,
     )
@@ -125,7 +131,8 @@ def pick_categories(categories: dict) -> list[str]:
 
 
 def run_category(template: str, categories: dict, cat_key: str, model: str,
-                 n: int, parallel: int, round_size: int, out_path: Path) -> int:
+                 n: int, parallel: int, round_size: int, n_examples: int,
+                 out_path: Path) -> int:
     cat = categories[cat_key]
     total = 0
     batches = [min(BATCH_SIZE, n - i) for i in range(0, n, BATCH_SIZE)]
@@ -137,7 +144,8 @@ def run_category(template: str, categories: dict, cat_key: str, model: str,
         seed = ", ".join(random.sample(cat["style_hints"],
                                        k=min(2, len(cat["style_hints"])))) \
                + f" (รูปแบบที่ {attempt})"
-        prompt = build_prompt(template, cat, seed, size)
+        prompt = build_prompt(template, cat, seed, size,
+                              load_examples(cat, n_examples))
         return parse_sentences(call_ollama(prompt, model))
 
     gpu_checked = False
@@ -175,9 +183,11 @@ def self_check() -> int:
     assert len(categories) == 15, f"expected 15 categories, got {len(categories)}"
     assert not {"8", "9", "18"} & set(categories), "forbidden category present"
     template = load_template(BASE_DIR / "prompts.txt")
-    p = build_prompt(template, categories["1"], "ทดสอบ", 1)
+    p = build_prompt(template, categories["1"], "ทดสอบ", 1,
+                     load_examples(categories["1"], 3))
     for var in ("Gambling", "ทดสอบ"):
         assert var in p, f"template var missing: {var}"
+    assert categories["1"]["examples"], "examples ว่าง — รัน populate ก่อน"
     print("categories.json + prompts.txt OK")
     try:
         r = call_ollama("ตอบสั้นๆ: 1+1=?", list_models()[0])
@@ -220,17 +230,18 @@ def main() -> None:
         n = ask_int("จำนวนประโยคต่อหมวด", DEFAULT_N)
         parallel = ask_int("จำนวน parallel request", DEFAULT_PARALLEL)
         round_size = ask_int("ประโยคต่อรอบ (เซฟทุก batch ในรอบ)", 100)
+        n_examples = ask_int("ประโยคตัวอย่างใน prompt", DEFAULT_EXAMPLES)
         out_path = Path(ask_str("ไฟล์ output", DEFAULT_OUT))
 
         print(f"\nสรุป: model={model} หมวด={','.join(keys)} n={n}/หมวด "
-              f"parallel={parallel} round={round_size} out={out_path}")
+              f"parallel={parallel} round={round_size} examples={n_examples} out={out_path}")
         if input("เริ่ม generate? (y/n): ").strip().lower() != "y":
             continue
 
         out_path.parent.mkdir(parents=True, exist_ok=True)
         for k in keys:
             grand += run_category(template, categories, k, model, n,
-                                  parallel, round_size, out_path)
+                                  parallel, round_size, n_examples, out_path)
         break
     print(f"\nเสร็จสิ้น รวม {grand} ประโยค")
 
