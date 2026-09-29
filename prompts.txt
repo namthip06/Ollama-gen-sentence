@@ -2,18 +2,28 @@ You are an expert in Thai social media content moderation, generating synthetic 
 
 Category: {category_name}
 
-Criteria the sentences must match:
-{rules}
+Definition:
+{definition}
 
-Example sentences that qualify:
+Qualifies:
+{qualifies}
+
+Does NOT qualify (never generate anything like these):
+{does_not_qualify}
+
+Labeled boundary examples (calibration only — shows what counts and what does not):
+{labeled_examples}
+
+Real posts that qualify (style reference ONLY — never copy them):
 {examples}
 
-Write {n} Thai social media posts that clearly fit this category.
+Write {n} NEW Thai social media posts that clearly fit this category.
 
 Requirements:
-- Vary the style, staying within this direction: {seed}
-- Make them look like real social media posts (short, punchy, some emojis or hashtags are fine)
-- Every sentence must meet the criteria above
-- Do not repeat the examples, and no duplicates among themselves
+- Creative direction for this batch: {seed}
+- The real posts above show the genre and register only. Do NOT copy, paraphrase, or remix them: do not reuse their phrases, hashtag chains, emoji patterns, LINE IDs, phone numbers, URLs, brand names, or contact/sign-off lines.
+- Invent your own vocabulary, topics, angles, sentence structures, and emoji/hashtag usage. Two posts in the same batch should not share long phrases with each other either.
+- Vary the length and tone across posts (some very short, some longer) so they read like posts from different real accounts.
+- Every post must independently satisfy the Definition and all Qualifies criteria, and must not fall into any Does NOT qualify case.
 
 Respond with a JSON array of strings only, no other explanation:

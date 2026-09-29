@@ -1,7 +1,39 @@
 {
   "1": {
+    "definition": "Any social media post that advertises, promotes, or facilitates gambling activities targeting a Thai audience.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Any gambling format is advertised on social media (online casino, sports betting, lottery, card games, slot games, etc.)",
+      "Gambling-related keywords appear in the post"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "General news or opinions about gambling",
+      "Educational content about gambling risks"
+    ],
+    "labeled_examples": [
+      {
+        "text": "สมัครวันนี้รับโบนัส 100% บาคาร่าออนไลน์ จ่ายจริง ถอนได้จริง",
+        "label": "Qualifies",
+        "reason": "Clear gambling advertisement with bonus offer"
+      },
+      {
+        "text": "แทงบอลออนไลน์ ได้เงินจริง สมัครฟรี ลิงก์ในไบโอ",
+        "label": "Qualifies",
+        "reason": "Sports betting ad with sign-up CTA"
+      },
+      {
+        "text": "รัฐบาลควรเปิดคาสิโนถูกกฎหมายไหม? แสดงความคิดเห็น",
+        "label": "Does Not Qualify",
+        "reason": "General opinion poll, no gambling service offered"
+      },
+      {
+        "text": "หวยดังแม่นมาก เลขเด็ดงวดนี้ ส่งฟรีไม่มีค่าใช้จ่าย",
+        "label": "Qualifies",
+        "reason": "Lottery tip promotion is still gambling content; 'free' does not exempt it"
+      }
+    ],
     "name": "Gambling (พนัน)",
-    "rules": "โฆษณา/ชวนใช้บริการพนันสำหรับคนไทย: คาสิโนออนไลน์, แทงบอล, หวย, สล็อต ฯลฯ มี keyword การพนัน + มีชวนสมัคร/โบนัส/ลิงก์ ไม่นับ: ข่าว ความคิดเห็น เนื้อหาต่างประเทศ",
     "examples": [
       "😘สล็อตพีจีเบท1บาททุนน้อยก็แตกหนักได้💥เพิ่มอัตราเกมแตกทุกค่ายถึง90%สุดปัง!💁‍♀️สมัครฟรี>>",
       "มาสนุกกับสาวสวยรวยแน่นอน🎯ฝาก-ถอนไม่มีขั้นต่ำ🎯ระบบลื่นไม่มีสะดุด🎯แอดมินบริการ24ชั่วโมง🚀สนใจคลิกลิงค์🚀",
@@ -43,8 +75,44 @@
     ]
   },
   "2": {
+    "definition": "Explicit sexual content showing nudity or sexual acts without blur/censorship.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Post contains keywords strongly indicating pornographic content"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "Suggestive content without clear sexual acts",
+      "Artistic nudity in a clearly educational or fine-art context"
+    ],
+    "labeled_examples": [
+      {
+        "text": "Thumbnail showing exposed genitalia, unblurred, caption: 'คลิปใหม่มาแล้ว'",
+        "label": "Qualifies",
+        "reason": "Unblurred genitalia visible in thumbnail"
+      },
+      {
+        "text": "Post with unblurred image of sexual intercourse, no caption",
+        "label": "Qualifies",
+        "reason": "Explicit visual evidence is sufficient"
+      },
+      {
+        "text": "Thumbnail where genitalia is blurred with emoji/mosaic",
+        "label": "Does Not Qualify",
+        "reason": "Content is censored"
+      },
+      {
+        "text": "Lingerie model photo with suggestive caption",
+        "label": "Does Not Qualify",
+        "reason": "No nudity or sexual act visible"
+      },
+      {
+        "text": "Artistic painting of a nude figure shared in a museum context",
+        "label": "Does Not Qualify",
+        "reason": "Fine-art context; no sexual act; no explicit keyword"
+      }
+    ],
     "name": "Pornography (ลามก)",
-    "rules": "โพสต์ที่มี keyword ชี้ชัดว่าเป็นเนื้อหาโป๊เปลือย/คลิปหลุด ไม่นับ: เนื้อหาชวนฝัน/แต่งตัว ข่าว ศิลปะ",
     "examples": [
       "หาสาวคับหาไม่ได้สักทีนัดเย็ดคั้บอยากมากครั้งแรก#FWBชลบุรี#นัดเย็ดบางแสน#FWBบางแสน#FWBกทม#สาวอ้วนนมใหญ่#เงี่ยน#เรียลมหาลัย#เรียลชาย#เรียลหญิง#onsบางแสน#พัทยานัดเย็ด#นัดเย็ดบางแสน",
       "#กูบ่ได้เป็นหยังกูเบิ่งหนังโป๊😂😂😂😂😂",
@@ -84,8 +152,40 @@
     ]
   },
   "3": {
+    "definition": "Content in Thai that involves impersonation of official agencies or documented victim reports of fraud.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "An official source (government agency, organization) or a verified victim is cited",
+      "Clear evidence of impersonation, false claims, or financial deception"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "General opinions or complaints without official backing",
+      "Satirical content clearly labeled as such"
+    ],
+    "labeled_examples": [
+      {
+        "text": "DSI แจ้งเตือน! มิจฉาชีพแอบอ้างเป็นธนาคารกสิกร หลอกโอนเงิน ผู้เสียหายกว่า 200 คน",
+        "label": "Qualifies",
+        "reason": "Official agency (DSI) cited, victims reported"
+      },
+      {
+        "text": "ผู้เสียหายแจ้งความ บริษัทลงทุน X หลอกลงทุน สูญเงิน 3 ล้าน",
+        "label": "Qualifies",
+        "reason": "Victim filed official complaint"
+      },
+      {
+        "text": "ระวังแอปนี้ มันหลอกทุกคน อย่าโหลด",
+        "label": "Does Not Qualify",
+        "reason": "Personal opinion, no official source"
+      },
+      {
+        "text": "Screenshot of a LINE message impersonating SCB Bank, shared by a private user with no official report",
+        "label": "Does Not Qualify",
+        "reason": "No official source or victim complaint — treated as general warning opinion"
+      }
+    ],
     "name": "Fraud / Scam (หลอกลวง)",
-    "rules": "เนื้อหาเกี่ยวกับการแอบอ้าง/หลอกลวงการเงิน ที่มีแหล่งอ้างอิงทางการ (หน่วยงานรัฐ DSI ตำรวจ ฯลฯ) หรือผู้เสียหายแจ้งความจริง ไม่นับ: ความเห็นส่วนตัว เนื้อหาต่างประเทศ",
     "examples": [
       "อย่าหลงเชื่อเว็บfreebet99.comโกงเงินอย่าไปเล่นเด็ดขาดตอนแรกเชื่อใจเพราะเตือนภัยเว็บอื่นโกงที่แท้หลอกให้คนเข้าเล่นของมันแล้วมันโกงFreebet99เว็บโกงสุดๆอย่าหลงเชื่อเด็ดขาดแล้วจะตกเป็นเหลือของมัน!!!!เว็บห่วยเว็บจอมปลอม!!นำสลิปคนอื่นมายืนยันจ่ายจริงห่าไรโกงกูไปแค่70,000ยังโกงอย่าหลงเชื่อFreebet99โกง!!",
       "อุดรธานีเตือนภัย!พระปลอมระบาดหนักใส่สบงนั่งท้ายกระบะเร่ขอเงิน-ยัดพระเครื่องใส่มือชาวบ้านเตือนภัยประชาชนระวังกลุ่มพระปลอมเร่ขอเงินและยัดพระเครื่องขายให้ชาวบ้านขณะนี้กำลังระบาดในหลายพื้นที่ของจังหวัดอุดรธานีโดยกลุ่มชายแต่งกายคล้ายพระสงฆ์นั่งท้ายรถกระบะตระเวนไปตามหมู่บ้านอ้างมาขอบริจาคทำบุญก่อนยื่นพระเครื่องใส่มือบอกค่าบูชาองค์ละ99หรือ199บาทผู้สื่อข่าวรายงานว่ามีผู้ใช้เฟซบุ๊กและเพจท้องถิ่นในอุดรธานีเผยแพร่คลิปวิดีโอเตือนภัยพฤติกรรมของชายแต่งกายคล้ายพระสงฆ์ใช้รถกระบะขาวตระเวนขอเงินและขนมจากชาวบ้านอย่างเปิดเผยพร้อมเสียงพูดว่า“ขอเงินเพิ่นบ่มีขอขนมฉันกะได้”ทำให้ประชาชนจำนวนมากไม่พอใจเห็นว่าเป็นการกระทำไม่เหมาะสมต่อสมณเพศขณะนี้พบระบาดในหลายอำเภอทั้งหนองหานทุ่งฝนและบ้านดุงผู้สื่อข่าวลงพื้นที่ตรวจสอบที่ร้านขายของชำในบ้านทุ่งใหญ่อำเภอทุ่งฝนพบชาวบ้านเล่าว่าเมื่อวันที่23ตุลาคมที่ผ่านมามีชายแต่งกายคล้ายพระลงจากรถกระบะเดินเข้ามาขอทำบุญโดยอ้างว่ามาจากบ้านนาดีตนจึงร่วมทำบุญให้20บาทก่อนหญิงที่มาด้วยพูดว่า“เอาของดีกับหลวงตานะ”จากนั้นชายคล้ายพระยื่นพระเครื่องมาให้พร้อมบอกค่าบูชา199บาทจึงปฏิเสธคืนไปแต่กลับพูดขอขนมแทนพร้อมชี้ไปที่สินค้าหน้าร้านทำให้มั่นใจว่าไม่ใช่พระจริงเพราะมีหญิงมาด้วยและแสดงกิริยาไม่สำรวมจึงอยากให้เจ้าหน้าที่ติดตามจับกุมมาดำเนินคดีอีกจุดหนึ่งที่ร้านขายแตงโมริมถนนในพื้นที่เดียวกันก็มีเหตุการณ์ลักษณะคล้ายกันโดยชายแต่งกายคล้ายพระสงฆ์เดินเข้ามาขอเงินและขอแตงโมจากเจ้าของร้านรวมถึงยังพบว่ากลุ่มพระปลอมกลุ่มนี้ได้ไปปรากฏที่อำเภอบ้านดุงด้วยกล้องวงจรปิดของร้านชำแห่งหนึ่งในบ้านโนนสะอาดตำบลบ้านชัยสามารถบันทึกภาพชายแต่งกายคล้ายพระ2รูปหนึ่งอ้วนหนึ่งผอมพร้อมหญิงอีก1คนใช้รถกระบะโตโยต้าสีขาวตระเวนขอเงินและแจกพระเครื่องโดยอ้างว่าจะนำเงินไปทำบุญกฐินแต่ชาวบ้านไม่หลงเชื่อชาวบ้านอีกคนหนึ่งในพื้นที่เล่าว่ากลุ่มพระปลอมนี้เคยมาที่ร้านตั้งแต่เดือนกุมภาพันธ์ที่ผ่านมาอ้างว่าจะจัดงานบุญใหญ่มีหมอลำมาร่วมแสดงพร้อมน",
@@ -125,8 +225,46 @@
     ]
   },
   "4": {
+    "definition": "Posts advertising the sale of e-cigarettes or e-liquid in Thailand.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Clear intent to sell e-cigarettes or e-liquid (not just a review)",
+      "Price is visible or language indicates a purchase transaction (สั่งซื้อ, inbox, ทักมา, สั่งได้เลย)"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "Reviews or opinions about e-cigarettes",
+      "General discussion or news about e-cigarette policy",
+      "Posts without any price or purchase signal"
+    ],
+    "labeled_examples": [
+      {
+        "text": "พอตราคาถูก ส่งทั่วไทย ตัวละ 250 บาท ทักมาเลย",
+        "label": "Qualifies",
+        "reason": "Selling keyword + price + purchase CTA"
+      },
+      {
+        "text": "น้ำยาบุหรี่ครบทุกกลิ่น สั่งขั้นต่ำ 3 ขวด ราคาส่ง",
+        "label": "Qualifies",
+        "reason": "E-liquid sale with order minimum"
+      },
+      {
+        "text": "รีวิว พอต XX รุ่นใหม่ ดีไหม? คุ้มมั้ย?",
+        "label": "Does Not Qualify",
+        "reason": "Product review, no price or sale intent"
+      },
+      {
+        "text": "รัฐบาลควรถูกกฎหมายบุหรี่ไฟฟ้าไหม?",
+        "label": "Does Not Qualify",
+        "reason": "General opinion/policy discussion"
+      },
+      {
+        "text": "Post showing e-cigarette image with caption 'ของมีพร้อม ทักสอบถามได้' but no price",
+        "label": "Qualifies",
+        "reason": "'ทักสอบถาม' + product image = purchase signal even without an explicit price"
+      }
+    ],
     "name": "E-Cigarettes (บุหรี่ไฟฟ้า)",
-    "rules": "โพสต์ขายบุหรี่ไฟฟ้า/พอต/น้ำยา ต้องมีเจตนาขาย (ราคา, สั่งซื้อ, ทักมา, inbox) ไม่นับ: รีวิว ข่าว ความคิดเห็น ไม่มีราคา/สัญญาณซื้อขาย",
     "examples": [
       "สนใจทักได้IDhisealda#บุหรี่ไฟฟ้า#อะตอม#อุปกรณ์บุหรี่ไฟฟ้า#ราคาถูก#ส่งของจริง#รับประกันคุณภาพ#สอบถามได้❤️❤️❤️",
       "⌇🌷𝐈𝐧𝐟𝐲𝟔,𝟎𝟎𝟎𝐩𝐮𝐟𝐟𝐬🌷⌇ความจุน้ำยา10ml.แบตเตอร์รี่ในตัว550mAh(ชาร์จแบตได้)นิโคติน3%กลิ่นชัดหอมหวานละมุนสุดๆไปเลอ✅สั่งซื้อLine@001gtncq✅สั่งซื้อเร่งด่วน|•LINE",
@@ -167,8 +305,53 @@
     ]
   },
   "5": {
+    "definition": "Posts offering paid sexual services in Thailand. All three components below are required for a post to qualify.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Price/compensation signal present (ราคา, ค่าตัว, โอนมัดจำ, ราคาคุยได้)",
+      "Sexual relationship implied (ฟีลแฟน, ค้างคืน, ไม่บวกเพิ่ม, ขาวตรงปก, ถุงเท่านั้น)",
+      "Self-offer or invitation (รับงาน, พร้อมดูแล, พร้อม, ได้ค่ะ, inbox มาเลย)",
+      "All three components (price + sexual signal + self-offer) must be present together"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "General opinions or dating posts",
+      "Seeking a partner without a price (FWB, หาคนเลี้ยงดู, หาแฟน)",
+      "Seeking a sugar daddy/mommy without an explicit sexual offer and price"
+    ],
+    "labeled_examples": [
+      {
+        "text": "รับงาน ค้างคืนได้ ถุงเท่านั้น ราคา 2,500 ทักมาเลยค่ะ",
+        "label": "Qualifies",
+        "reason": "All 3 components"
+      },
+      {
+        "text": "พร้อมดูแล ฟีลแฟน ค่าตัว inbox คุย",
+        "label": "Qualifies",
+        "reason": "All 3 components"
+      },
+      {
+        "text": "หาแฟน อยากมีคนดูแล ไม่ได้หาเงิน",
+        "label": "Does Not Qualify",
+        "reason": "No price, no sexual offer"
+      },
+      {
+        "text": "หาสปอนเซอร์ดูแลค่าใช้จ่ายประจำเดือน",
+        "label": "Does Not Qualify",
+        "reason": "Seeking financial support only, no sexual offer"
+      },
+      {
+        "text": "พร้อมนะคะ ค้างคืนได้ ทักมา",
+        "label": "Does Not Qualify",
+        "reason": "Price component missing; all 3 must be present"
+      },
+      {
+        "text": "รับงานกทม. ราคาตามตกลง ฟีลแฟน inbox ได้เลย",
+        "label": "Qualifies",
+        "reason": "'ราคาตามตกลง' counts as a price signal + sexual signal + self-offer"
+      }
+    ],
     "name": "Prostitution (ค้าประเวณี)",
-    "rules": "โพสต์เสนอบริการทางเพศแลกเงิน ต้องครบ 3 อย่าง: ราคา/ค่าตัว + ความสัมพันธ์ทางเพศ (ฟีลแฟน, ค้างคืน) + เสนอตัว/ชวน (รับงาน, ทักมา) ไม่นับ: หาแฟน FWB หาสปอนเซอร์ไม่มีราคา",
     "examples": [
       "น่ารักแบบนี้พี่ๆอยากเจอป่ะล่ะฟีลแฟนสุดๆไม่เร่งไม่รีบตามใจได้หมดคุยงานเองที่สำคัญเจอจ่ายหน้างานไม่มีมัดจำให้วุ่นวายอยากรู้จะฟินแค่ไหนมาลองนะคะID:ff56ff#รับงานโคราช#ไซด์ไลน์โคราช",
       "สาวแซ่บสาวอวบรับงานขาวเนียนตรงปกเจอจ่ายจบไม่มีบวกเพิ่มบริการดีฟิวแฟนฟิวเมียน้อยฟิวเพื่อนขี้อ้อวนเอาใจเก่งคุยสนุกพร้อมนัดค่ะIDlinenutty246#รับงานปิ่นเกล้า#รับงานจรัญสนิทวงศ์#รับงานบางกอกน้อย",
@@ -206,8 +389,48 @@
     ]
   },
   "6": {
+    "definition": "Posts advertising the sale of processed kratom drink (น้ำกระท่อม) in Thailand. Raw leaves do not qualify.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Product is processed into liquid form (น้ำกระท่อม)",
+      "Keywords explicitly indicate kratom drink (น้ำกระท่อม, กระท่อมพร้อมดื่ม, กระท่อมขวด, ส่งน้ำกระท่อม, 4×100)",
+      "Price is visible or a purchase signal is present"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "Keywords referring only to raw kratom leaves (ใบกระท่อม)",
+      "No keyword indicating liquid kratom",
+      "No price or purchase signal",
+      "General opinions or news"
+    ],
+    "labeled_examples": [
+      {
+        "text": "น้ำกระท่อมสด ขวดละ 30 ส่งทั่วประเทศ ทักได้เลย",
+        "label": "Qualifies",
+        "reason": "Liquid kratom + price + purchase CTA"
+      },
+      {
+        "text": "มีน้ำกระท่อมพร้อมส่ง สั่งขั้นต่ำ 10 ขวด",
+        "label": "Qualifies",
+        "reason": "Liquid kratom + purchase signal"
+      },
+      {
+        "text": "ขายใบกระท่อมสด กิโลละ 50 บาท",
+        "label": "Does Not Qualify",
+        "reason": "Raw leaves only, not processed drink"
+      },
+      {
+        "text": "กระท่อมดีต่อสุขภาพจริงไหม?",
+        "label": "Does Not Qualify",
+        "reason": "General opinion, no sale signal"
+      },
+      {
+        "text": "กระท่อม 4×100 ราคาส่ง",
+        "label": "Qualifies",
+        "reason": "'4×100' is a recognized kratom drink formula keyword + price reference"
+      }
+    ],
     "name": "Kratom Drink (กระท่อม)",
-    "rules": "โพสต์ขายน้ำกระท่อม (แปรรูปเป็นของเหลว: น้ำกระท่อม, กระท่อมพร้อมดื่ม, 4×100) ต้องมีราคาหรือสัญญาณซื้อขาย ไม่นับ: ขายใบกระท่อมดิบ ความคิดเห็น ข่าว",
     "examples": [
       "ฝากร้านน้ำกระท่อมด้วยครับหน้าอีซูซุก่อนถึงปั้มเชลล์อาชีวะสุราษ#fypシ#ขึ้นฟีดเถอะ#เด็กใต้ป้ายสุราษฎร์#แวะมาอุดหนุนได้ครับช่วงนี้มีโปรNubNeungLaewReumTonMai(YangMeOnePrungNie)maleversion(maleversion)-โอมวงทัพห้า",
       "สนธิกำลังบุกทลายร้านผลิตและขายน้ำใบกระท่อมเปิดขายกลางชุมชนเย้ยกฎหมายที่สงขลา",
@@ -247,8 +470,44 @@
     ]
   },
   "7": {
+    "definition": "Posts advertising the sale of cannabis flower/buds in Thailand. Covers flower/bud formats only.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "If the only keyword is 'ดอก' (without 'กัญชา'), a recognized strain name combined with a cannabis image together qualify",
+      "Price is visible or a purchase signal is present"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "General opinions or news"
+    ],
+    "labeled_examples": [
+      {
+        "text": "กัญชาพรีเมียม สายพันธุ์ OG Kush กรัมละ 300 ทักมา",
+        "label": "Qualifies",
+        "reason": "Keyword + strain name + price"
+      },
+      {
+        "text": "Bud สด ราคาส่ง ส่งทั่วไทย inbox ได้เลย",
+        "label": "Qualifies",
+        "reason": "Keyword + purchase signal"
+      },
+      {
+        "text": "ภาพสวยงามของดอกกัญชา #nature",
+        "label": "Does Not Qualify",
+        "reason": "No sale keyword or price"
+      },
+      {
+        "text": "กัญชาทางการแพทย์ดีอย่างไร?",
+        "label": "Does Not Qualify",
+        "reason": "No sale intent"
+      },
+      {
+        "text": "สายพันธุ์ Gorilla Glue มีของพร้อมส่ง ราคา inbox",
+        "label": "Qualifies",
+        "reason": "Recognized strain name + purchase signal; no image required in buy-sell posts"
+      }
+    ],
     "name": "Cannabis (กัญชา)",
-    "rules": "โพสต์ขายดอกกัญชา (flower/buds) ต้องมีราคาหรือสัญญาณซื้อขาย; ถ้ามีแค่ชื่อสายพันธุ์ (OG Kush, Gorilla Glue) + สัญญาณขายก็นับ ไม่นับ: ภาพสวย ข่าว ความคิดเห็น",
     "examples": [
       "เสียงอิสรชนLibertyVoiceกระท่อมกัญชาของดีทั้งนั้นใช่มะไม่เห็นจะพูดถึงเลย",
       "โปรโมชั่นลดสุดๆลดแหลกจากปกติกัญชาสายพันธุ์AK-47ได้ชื่อว่าTHCสูงมากๆกลิ่นหอมๆสนใจงานออแกนิคแท้ๆกรัมละ50บาทเหมาะสำหรับรักษาอาการคลายเครียดใช้ผสมอาหารหรือชงชาได้สูบได้แต่ห้ามก่อความวุ่นวายพร้อมส่งวันนี้#กัญชาสมุทรสงคราม#กัญชา#สายเขียว#กัญชาออแกนิค",
@@ -288,8 +547,45 @@
     ]
   },
   "10": {
+    "definition": "Posts recruiting workers for illegal or grey-area jobs in Thailand.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Job is clearly illegal or grey-area (แก๊งคอลเซ็นเตอร์, แรงงานต่างด้าวผิดกฎหมาย, ผีน้อย, งานสายเทา, งานสายดำ)",
+      "Post is a job listing, recruitment ad, or a request for identity scanning (รับสแกนหน้า)"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "Legitimate legal job postings",
+      "General news about illegal labor"
+    ],
+    "labeled_examples": [
+      {
+        "text": "รับสมัครงานสายเทา รายได้ดี ไม่ต้องมีประสบการณ์ ทักมา",
+        "label": "Qualifies",
+        "reason": "Explicit grey-area job recruitment"
+      },
+      {
+        "text": "รับสแกนหน้า บัตรประชาชน จ่ายวันละ 500",
+        "label": "Qualifies",
+        "reason": "Identity scanning request = illegal activity recruitment"
+      },
+      {
+        "text": "รับสมัครพนักงานบริษัท สวัสดิการดี มีประกันสังคม",
+        "label": "Does Not Qualify",
+        "reason": "Legitimate employment"
+      },
+      {
+        "text": "ข่าว: ตำรวจบุกจับแก๊งคอลเซ็นเตอร์",
+        "label": "Does Not Qualify",
+        "reason": "News report, not recruitment"
+      },
+      {
+        "text": "รับงานต่างประเทศ เงินเดือนสูง ไม่ต้องมีวีซ่า",
+        "label": "Qualifies",
+        "reason": "'ไม่ต้องมีวีซ่า' signals an undocumented illegal work arrangement"
+      }
+    ],
     "name": "Illegal Labor Recruitment (จัดหาแรงงานเถื่อน)",
-    "rules": "โพสต์รับสมัครงานผิดกฎหมาย/สายเทา: แก๊งคอลเซ็นเตอร์, งานสายเทา, รับสแกนหน้า, งานต่างประเทศไม่ต้องวีซ่า ไม่นับ: งานถูกกฎหมาย ข่าว",
     "examples": [
       "ออกพรรษาแล้วต้องการเด็กเอน-เอนชงเหล้าทักแชทมาได้เลยนะคะหรือโทร0943846703โทรได้24ชม.ค่ะ#ขอนแก่น#อุดร#อุบล#สารคาม#บุรีรัมย์#สุรินทร์#สกลนคร#กาฬสินธุ์#โคราช#เขาใหญ่#ชัยภูมิ#ศรีสะเกษ#นครพนม#หนองคาย#เลยหรือพื้นที่ใกล้เคียงสอบถามได้นะคะ",
       "แรงงานเถื่อนแตกฮือทีมจัดหางานชลบุรีบุกจู่โจมกวาดล้างแบบไม่ทันตั้งตัววันที่23กรกฎาคม2568นายภูวกรโตสิงห์ขรจัดหางานจังหวัดชลบุรีผนึกกำลังร่วมกับสำนักงานแรงงานฯและกองอำนวยการรักษาความมั่นคงภายในจังหวัดเปิดปฏิบัติการจู่โจมบุกตรวจโรงงานเป้าหมายในพื้นที่หมู่7ต.หนองอิรุณอ.บ้านบึงจ.ชลบุรีหลังมีเบาะแสร้องเรียนเรื่องแรงงานผิดกฎหมายทันทีที่เจ้าหน้าที่แสดงตัวเข้าตรวจสอบบรรดาแรงงานต่างด้าวแตกตื่นวิ่งหนีกันอลหม่านบางรายถึงขั้นปีนกำแพงหนีฝุ่นตลบและบางรายแอบซ่อนตัวอยู่ในห้องต่างๆของโรงงานหวังรอดการจับกุมแต่ไม่รอดสายตาทีมล้อมจับสุดท้ายรวบตัวได้ทั้งหมด15รายแบ่งเป็นชาวเมียนมา14คน(ชาย7หญิง7)และชาวกัมพูชาอีก1คน(หญิง)พบไม่มีใบอนุญาตทำงานถูกแจ้งข้อหา“ทำงานโดยไม่ได้รับอนุญาต”ตามพ.ร.ก.แรงงานต่างด้าวฯปี2560เบื้องต้นเจ้าหน้าที่ยังไล่เช็กบิลนายจ้างแจ้งข้อหา“รับต่างด้าวทำงานโดยไม่มีใบอนุญาต”พร้อมส่งเรื่องให้พนักงานสอบสวนสภ.บ้านบึงดำเนินคดีตามกฎหมายต่อไป.เครดิตSuperballth",
@@ -329,8 +625,47 @@
     ]
   },
   "11": {
+    "definition": "Posts advertising the sale of unregistered firearms in Thailand.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Contains the keyword 'ปืนเถื่อน' or 'ปืนไม่มีทะเบียน' in the post body",
+      "Price is visible or a purchase signal is present"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "Legal / registered firearms (ปืนถูกกฎหมาย, ปืนมีทะเบียน)",
+      "Modified or improvised firearms (ปืนแปลง, ปืนประดิษฐ์)",
+      "Posts with no keyword for unregistered firearms",
+      "General news"
+    ],
+    "labeled_examples": [
+      {
+        "text": "ปืนเถื่อน ราคาถูก ส่งทั่วไทย ทักได้เลย",
+        "label": "Qualifies",
+        "reason": "Mandatory keyword + price"
+      },
+      {
+        "text": "มีปืนไม่มีทะเบียน พร้อมส่ง inbox ราคาคุย",
+        "label": "Qualifies",
+        "reason": "Mandatory keyword + purchase signal"
+      },
+      {
+        "text": "ขายปืน Glock 17 มีทะเบียนครบ ราคา 25,000",
+        "label": "Does Not Qualify",
+        "reason": "Registered firearm"
+      },
+      {
+        "text": "รีวิวปืนรุ่นใหม่ ดีไหม?",
+        "label": "Does Not Qualify",
+        "reason": "No sale intent, no unregistered keyword"
+      },
+      {
+        "text": "ขายปืนแปลง ราคาถูก",
+        "label": "Does Not Qualify",
+        "reason": "Modified firearm — explicitly excluded"
+      }
+    ],
     "name": "Illegal Firearms (อาวุธปืน)",
-    "rules": "โพสต์ขายปืนเถื่อน ต้องมี keyword \"ปืนเถื่อน\" หรือ \"ปืนไม่มีทะเบียน\" + ราคา/สัญญาณซื้อขาย ไม่นับ: ปืนมีทะเบียน ปืนแปลง/ประดิษฐ์ รีวิว ข่าว",
     "examples": [
       "ปืนSmith&WessonM-60-16ปืนระบบ100%ดับเบิ้ล&ซิ้งเกิ้ลปกติลำเกลียวคมกริ๊บ:Sาคา18,000:อุปกรณ์ครบบรรจุลูก.38mmบรรจุได้5นัดแถมลูก25หน่วยครับโอนส่ง-นัดรับ-สด-ผ่อนหากคุณลูกค้าท่านใดต้องการสามารถทักบ้านเขียวมาได้เลยครับ#ปืนไม่มีทะเบียน#ปืนหลุดจํานํา",
       "จับแก๊งพม่าค้ายา-ผลิตปืนเถื่อนขาย",
@@ -369,8 +704,45 @@
     ]
   },
   "12": {
+    "definition": "Posts advertising the sale of alcoholic beverages in Thailand.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Price is visible or language indicates a purchase transaction",
+      "Alcohol-related keywords are present"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "No alcohol keyword",
+      "General news or reviews about alcohol"
+    ],
+    "labeled_examples": [
+      {
+        "text": "เหล้านำเข้า ราคาส่ง ขวดละ 350 ส่งถึงบ้าน",
+        "label": "Qualifies",
+        "reason": "Alcohol keyword + price + delivery offer"
+      },
+      {
+        "text": "ไวน์ราคาดี สั่งได้ทาง inbox ส่งทั่วกทม.",
+        "label": "Qualifies",
+        "reason": "Alcohol + purchase signal"
+      },
+      {
+        "text": "รีวิวบาร์แห่งใหม่ย่านทองหล่อ บรรยากาศดี",
+        "label": "Does Not Qualify",
+        "reason": "Review/editorial, no sale"
+      },
+      {
+        "text": "ปาร์ตี้คืนนี้ มีเบียร์ฟรี! มาเลย",
+        "label": "Does Not Qualify",
+        "reason": "Free giveaway at an event, not a commercial sale"
+      },
+      {
+        "text": "เบียร์โฮมเมดขาย ลิตรละ 120",
+        "label": "Qualifies",
+        "reason": "Alcohol + explicit price = sale"
+      }
+    ],
     "name": "Alcohol Advertising (โฆษณาแอลกอฮอล์)",
-    "rules": "โพสต์ขายเหล้า เบียร์ ไวน์ ต้องมี keyword แอลกอฮอล์ + ราคา/ช่องทางซื้อ ไม่นับ: รีวิวบาร์ ข่าว แจกฟรีในงาน",
     "examples": [
       "🔸เหล้าเสรีนายกทิม🔸เหล้าของคนไทยผลิตจากอ้อยTheSpiritofChaiyaPhum(เดอะสปิริตออฟชัยภูมิ)กำลังตามหากันให้ควักกกสนใจทักมาน่ะครับมีหลายลัง🥰#เหล้าชัยภูมิแบนหรือกลมมีน่ะครับ",
       "เบียร์ลาวส่งฟรีทั่วไทยเอาเบียร์ลาวมาขายที่ไทยเสียภาษีถูกต้องไหมค่ะ",
@@ -410,8 +782,42 @@
     ]
   },
   "13": {
+    "definition": "Posts illegally distributing copyrighted films or streaming unauthorized sports content online.",
+    "qualifies": [
+      "Post distributes a copyrighted film (หนังออนไลน์) or streams live sports (เว็บบอลออนไลน์) without authorization"
+    ],
+    "does_not_qualify": [
+      "Legal streaming platforms promoting their own licensed content",
+      "Film reviews or trailer sharing without an unauthorized access link"
+    ],
+    "labeled_examples": [
+      {
+        "text": "Post: '[ชื่อหนัง] HD พากย์ไทย' + thumbnail + link to pirate site",
+        "label": "Qualifies",
+        "reason": "Unauthorized access link to a copyrighted film"
+      },
+      {
+        "text": "ดูบอลสด [ลีก] คืนนี้ฟรี (unauthorized streaming site)",
+        "label": "Qualifies",
+        "reason": "Unauthorized live sports stream"
+      },
+      {
+        "text": "[ชื่อหนัง] ดีมากเลย ใครดูบ้าง?",
+        "label": "Does Not Qualify",
+        "reason": "No access link"
+      },
+      {
+        "text": "ดูหนังออนไลน์ที่ Netflix",
+        "label": "Does Not Qualify",
+        "reason": "Licensed platform"
+      },
+      {
+        "text": "Link goes to a Google Drive folder containing a film file",
+        "label": "Qualifies",
+        "reason": "Google Drive link with a film file counts as an access link"
+      }
+    ],
     "name": "Copyright Infringement (ลิขสิทธิ์)",
-    "rules": "โพสต์แจก/สตรีมหนังผิดกฎหมาย (หนัง HD พากย์ไทย + ลิงก์) หรือดูบอลสดผ่านเว็บผิดกฎหมาย ไม่นับ: แพลตฟอร์มถูกลิขสิทธิ์ รีวิวหนังไม่มีลิงก์",
     "examples": [
       "หนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหนังใหม่2025HDดูหนังชนโรงเต็มเรื่องพากย์ไทยชนโรงตรงปกหน",
       "พร้อมส่งยูทูปพรีเมี่ยม30วัน\"ไม่ต่อเมล\"เมลลูกค้า15บาทเมลร้าน20บาท-ใช้YouTubemusicได้-รับประกันตลอดการใช้งาน-เราทำแอคเองไม่โกงแน่นอน100%สนใจทักDM/ไลน์หน้าไบโอเลยย#หารYouTubePremium#หารยูทูป#หารยูทูปพรีเมี่ยม#ยูทูปพรีเมี่ยม;-\"-;\"○♤♡",
@@ -450,8 +856,42 @@
     ]
   },
   "14": {
+    "definition": "Content that mocks, distorts, or attacks sacred religious figures or objects — primarily the Buddha and core sacred figures.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Content mocks, distorts, or attacks sacred figures (พระพุทธเจ้า / religious founders) or religious icons (พระพุทธรูป)"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "No mockery or defamation of sacred figures or objects",
+      "General news or journalism about religious topics",
+      "General opinions about religious news or monks",
+      "Mocking of temples, religious instruments, or rituals (out of scope)",
+      "Insulting religious leaders or scholars (out of scope; re-evaluate as Hate Speech if applicable)"
+    ],
+    "labeled_examples": [
+      {
+        "text": "พระพุทธเจ้าเป็นตัวตลก ล้าสมัย",
+        "label": "Qualifies",
+        "reason": "Direct defamation of the Buddha"
+      },
+      {
+        "text": "วัดนี้สวยมาก แนะนำให้มาเที่ยว",
+        "label": "Does Not Qualify",
+        "reason": "Positive content"
+      },
+      {
+        "text": "พระสงฆ์ทุจริต เป็นข่าวใหญ่",
+        "label": "Does Not Qualify",
+        "reason": "News about monks, not mockery of sacred figures"
+      },
+      {
+        "text": "Meme mocking a Buddhist temple ceremony",
+        "label": "Does Not Qualify",
+        "reason": "Temples and rituals are out of scope"
+      }
+    ],
     "name": "Religion (ศาสนา)",
-    "rules": "เนื้อหาล้อเลียน/ดูหมิ่นพระพุทธเจ้าหรือองค์สูงสุดของศาสนาโดยตรง ไม่นับ: ล้อวัด พิธีกรรม พระสงฆ์ ข่าวศาสนา",
     "examples": [
       "วงการผ้าเหลืองไม่แผ่ว#ผู้โดยสารหญิงผวานอนหลับอยู่บน#รถโดยสารดีๆถูก#พระสงฆ์ล้วงมือจับหน้าอก#ข่าวออนไลน์7HD#Ch7HDNews#ข่าวTikTokเสียงต้นฉบับ-Ch7HDNews",
       "\"ธรรมนัส\"ปัดส.ส.เอี่ยวสแกมเมอร์เป็นเรื่องเก่า!ลั่นจ่อฟ้องคนพาดพิงทำพรรคเสียหายย้ำนักการเมืองทุกคนมีอดีต.30ตุลาคม2568ร้อยเอกธรรมนัสพรหมเผ่ารองนายกรัฐมนตรีและรัฐมนตรีว่าการกระทรวงเกษตรและสหกรณ์ในฐานะประธานที่ปรึกษาพรรคกล้าธรรมกล่าวชี้แจงกรณีที่มีการเชื่อมโยงนายชนนพัฒฐ์นาคสั้วส.ส.ในสังกัดเข้าไปเกี่ยวข้องกับแก๊งสแกมเมอร์.ร.อ.ธรรมนัสยืนยันว่าเรื่องดังกล่าวเป็น\"เรื่องเก่า\"ซึ่งนายชนนพัฒฐ์ได้ชี้แจงและผ่านกระบวนการยุติธรรมก่อนเข้าสู่เวทีการเมืองแล้ว.ซึ่งร.อ.ธรรมนัสระบุว่าสังคมไทยมักเหมารวมทุกคดีเป็นสแกมเมอร์ทั้งที่คดีการพนันออนไลน์,การค้ามนุษย์,หรือหลอกลวงประชาชนนั้นมีประเภทที่แตกต่างกันและขอให้สื่อมวลชนนำเสนอให้ชัดเจนพร้อมยืนยันว่าพรรคไม่สนับสนุนขบวนการสแกมเมอร์อย่างแน่นอน.ส่วนกรณีที่ทำให้พรรคได้รับความเสียหายร.อ.ธรรมนัสเผยว่าได้มอบหมายฝ่ายกฎหมายดำเนินการกับผู้ที่พาดพิงพรรคแล้วโดยย้ำว่าพรรคเติบโตเร็วและอาจถูกโจมตีทางการเมืองแต่จะเร่งแก้ไขปัญหาภายใน\"นักการเมืองทุกคนมีอดีตอย่าเหมารวม\".ทั้งนี้ร.อ.ธรรมนัสยังกล่าวทิ้งท้ายถึงทุกฝ่ายว่าอย่าตรวจสอบกันไปมาในทางการเมืองพร้อมตั้งคำถามว่า\"400ชีวิตในสภาฯล้วนมีประวัติจะให้ซัดกันหมดหรือไม่\"และย้ำจุดยืนของพรรคกล้าธรรมว่าจะมุ่ง\"ก้มหน้าทำงาน\".ภาพศรันย์พงษ์สวัสดิ์:ไทยรัฐออนไลน์.#ธรรมนัส#ชนนพัฒฐ์#สแกมเมอร์#รัฐบาล#การเมือง#ไทยรัฐทีวี32",
@@ -489,8 +929,46 @@
     ]
   },
   "15": {
+    "definition": "Posts offering commercial surrogacy services in Thailand.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Explicitly offers to carry a pregnancy for compensation (รับจ้างตั้งครรภ์แทน, รับอุ้มบุญ)",
+      "Both offering and seeking a surrogate qualify (solicitation falls in the same category)"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "Unrelated to surrogacy",
+      "General opinions or news about surrogacy",
+      "Blog articles or educational content"
+    ],
+    "labeled_examples": [
+      {
+        "text": "รับอุ้มบุญ มีประสบการณ์ ติดต่อ inbox",
+        "label": "Qualifies",
+        "reason": "Direct surrogacy offer"
+      },
+      {
+        "text": "รับตั้งครรภ์แทน ค่าตอบแทนตกลงได้ สนใจทักมา",
+        "label": "Qualifies",
+        "reason": "Surrogacy offer with compensation"
+      },
+      {
+        "text": "อุ้มบุญควรถูกกฎหมายในไทยไหม?",
+        "label": "Does Not Qualify",
+        "reason": "General opinion"
+      },
+      {
+        "text": "คลินิกช่วยมีบุตร IVF ราคาเริ่มต้น",
+        "label": "Does Not Qualify",
+        "reason": "IVF clinic, not a surrogacy offer"
+      },
+      {
+        "text": "หาคุณแม่อุ้มบุญ ให้ค่าตอบแทนสูง (posted by a would-be parent)",
+        "label": "Qualifies",
+        "reason": "Solicitation of surrogacy qualifies the same as offering"
+      }
+    ],
     "name": "Surrogacy (การรับตั้งครรภ์แทน)",
-    "rules": "โพสต์เสนอรับจ้างตั้งครรภ์แทน (รับอุ้มบุญ, รับตั้งครรภ์แทน) พร้อมค่าตอบแทน ทั้งฝั่งเสนอและฝั่งหา ไม่นับ: คลินิก IVF ความคิดเห็น ข่าว",
     "examples": [
       "สายฟิวแฟนต้องชอบหนูรับงานเองตรงปกจริงๆส่งรูปให้ดูก่อนได้เลยมั่นใจว่าไม่ผิดหวังฟีลคนรักอบอุ่นไม่ต้องโอนไม่ต้องมัดจำเจอตัวจริงก่อนค่อยจ่ายปลอดภัยหายห่วงบริการครบทั้งอาบน้ำให้นวดคลายสบายไม่เร่งทุกคิวมีอารมณ์ร่วมเต็มที่janenee69#รับงานพัทยา",
       "🍒เชียร์เหล้าเบียร์สนใจทักค่ะ🍒✅เรท550-800บ✅สนใจทักส่งคอมการ์ด👉(ข้อมูลในคอมการ์ด)👈1.ร้านที่สนใจ2.ชื่อนามสกุลชื่อเล่นอายุ3.น้ำหนักส่วนสูงสัดส่วน4.เบอร์โทร💥เชียร์เหล้าSilverWolfเรท800บ💥✅1.ร้าน:TheBucket:ข้าวสารทำงานทุก:ศุกร์-เสาร์เวลาทำงาน:20.00-02.00น.✅ร้าน:greenสรงประภา12ดอนเมืองเวลา18:00-00:00น.ทำงานทุก:ศุกร์-เสาร์เริ่มงาน:22/9/68✅ร้าน:ตลาดAwake:เมืองปทุมเวลา18:00-00:00น.วันทำงานทุก:ศุกร์-เสาร์วันที่เริ่มงาน:9/5/68———————————————💥Leoเรท750💥✅ร้านป้ารวมบางกรวยเวลา15.00-21.00วันทำงาน19,20,21,22,23,25,26,28,29,30,31/8/68💥Mybeerเรท550💥✅ร้าน:Fullmoonลาดพร้าววังหินเวลา:20:00-02:00วันทำงาน:พ,พฤ,ศ,ส(4วัน/สัปดาห์)วันหยุด:อาทิตย์จันทร์อังคารเริ่มงาน:21/8/68✅ร้าน:ลานลมอุดมสุขเวลาทำงาน:19.00-01.00น.วันทำงาน:พ,พฤ,ศ,ส(4วัน/สัปดาห์)วันหยุด:อาทิตย์จันทร์อังคารเริ่มงาน:03/09/2568-----------------------------💁‍♀️คุณสมบัติ–เพศหญิงอายุ20-30ปี👉ขอมีประสบการณ์เท่านั้น👈👉พร้อมเริ่มทำงานตามแจ้ง👈🔻เงินออกตามรอบ🔻🚩ส่งสมัครที่Line🆔susi6249",
@@ -522,8 +1000,46 @@
     ]
   },
   "16": {
+    "definition": "Posts advertising loans with interest rates exceeding the legal limit of 15% per year, or loans with floating/unregulated interest.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Interest rate explicitly exceeds 15% per year, or uses floating interest (ดอกลอย)",
+      "Tiered/escalating loan schemes where the rate exceeds 15%",
+      "Monthly rates that annualize above 15% still qualify (e.g. 3%/month = 36%/year)"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "General opinions or news",
+      "Rates at or below 15% per year"
+    ],
+    "labeled_examples": [
+      {
+        "text": "ปล่อยกู้ ดอก 20% ต่อเดือน อนุมัติไว",
+        "label": "Qualifies",
+        "reason": "20% per month far exceeds the 15% annual legal limit"
+      },
+      {
+        "text": "กู้เงินด่วน ดอกลอย จ่ายตามยอดที่เหลือ",
+        "label": "Qualifies",
+        "reason": "Floating interest = illegal"
+      },
+      {
+        "text": "สินเชื่อส่วนบุคคล ดอก 12% ต่อปี ผ่อนสบาย",
+        "label": "Does Not Qualify",
+        "reason": "Below the 15% annual limit"
+      },
+      {
+        "text": "ธนาคารแห่งใหม่เปิดบริการสินเชื่อ",
+        "label": "Does Not Qualify",
+        "reason": "News, no rate information"
+      },
+      {
+        "text": "Loan ad showing 'ดอก 3% ต่อเดือน'",
+        "label": "Qualifies",
+        "reason": "3%/month = 36%/year — clearly exceeds 15% even though the monthly figure looks small"
+      }
+    ],
     "name": "Illegal Loans (เงินกู้)",
-    "rules": "โพสต์ปล่อยกู้ที่ดอกเกิน 15% ต่อปี หรือดอกลอย หรือดอกรายเดือน (เช่น 3-20% ต่อเดือน = เกินขีดกฎหมาย) ไม่นับ: สินเชื่อดอกไม่เกิน 15%/ปี ข่าว",
     "examples": [
       "*ขออนุญาตรีวิววันที่08/9/2566ยอดเงินอนุมัติไป50,000บาทยังปล่อยอย่างต่อเนื่องนะคะปล่อยยอดจริง💸บริการเงินกู้ออนไลน์//เงินกู้นอกระบบ💸วันนี้พร้อมอนุมัติรับยอดภายใน5-10นาทีพ่อค้าแม่ค้า/คนมีรายได้น้ย200-300บาทรับหมดนะคะยื่นกู้วันนี้ได้ยอดวันนี้เลยค่ะ♥️*",
       "🎊รีวิววันนี้(27/2/2565)ทางบริษัทเราได้อนุมัติยอดกู้ให้ลูกค้าจำนวนเงิน(20,000)บาทถ้วนลูกค้าคนไหนที่กำลังเดือดร้อนหรือต้องการใช้เงินสามารถกู้กับทางบริษัทเราได้เลยค่ะ🎊ทางเรากู้ง่า✨ยอนุมัติเร็ว✨ดอกถูกร้อยละ(2)บาทกู้ได้จริงได้ชัวร์ต้องทางบริษัทเราเท่านั้นค่ะ🔥เป็นบริษัทเงินกู้นอกระบบออนไลน์ที่กู้ได้จริงไม่มีโกง🎊กู้ที่ไหนแล้วไม่ได้หรือกู้ที่อื่นแล้วไม่ผ่านกู้อื่นแล้วโดนโกง✨มากู้กับทางบริษัทเราได้ชัวร์ไม่ผิดหวังและไม่เสียเวลา🔥รับประกัน100%ค่ะ🙏🎊ทางบริษัทกำลังรออนุมัติลูกค้าทุกท่านที่เดือดร้อนอยู่นะครับเข้ามาทำรายการกู้กับทางบริษัทได้เลยค่ะ",
@@ -562,8 +1078,45 @@
     ]
   },
   "17": {
+    "definition": "Posts offering to create, sell, or falsify official documents.",
+    "qualifies": [
+      "Content is in Thai or clearly targets a Thai audience",
+      "Text, image, or clip shows activity of making, selling, or forging documents such as: เอกสารราชการ, วุฒิการศึกษา, บัตรประชาชน, ใบขับขี่, ใบรับรองแพทย์, พาสปอร์ต"
+    ],
+    "does_not_qualify": [
+      "Foreign-language content",
+      "No evidence of document forgery activity",
+      "General opinions or news articles",
+      "Generic document editing or portfolio design without official-document context"
+    ],
+    "labeled_examples": [
+      {
+        "text": "รับทำใบรับรองแพทย์ ใบลาป่วย ราคา 200 บาท",
+        "label": "Qualifies",
+        "reason": "Explicit forgery offer for an official document"
+      },
+      {
+        "text": "ทำวุฒิปลอม ป.ตรี-โท ราคา 1,500 ส่งภายใน 3 วัน",
+        "label": "Qualifies",
+        "reason": "Degree forgery"
+      },
+      {
+        "text": "ทำไมเอกสารราชการถึงช้าจัง ไม่พอใจ",
+        "label": "Does Not Qualify",
+        "reason": "Complaint, not forgery"
+      },
+      {
+        "text": "ข่าว: จับแก๊งปลอมบัตรประชาชน",
+        "label": "Does Not Qualify",
+        "reason": "News report"
+      },
+      {
+        "text": "รับทำ portfolio สวยๆ ดูน่าเชื่อถือ",
+        "label": "Does Not Qualify",
+        "reason": "Portfolio design, not official document forgery"
+      }
+    ],
     "name": "Forged Documents (รับทำเอกสารปลอม)",
-    "rules": "โพสต์รับทำ/ขายเอกสารปลอม: วุฒิการศึกษา บัตรประชาชน ใบขับขี่ ใบรับรองแพทย์ พาสปอร์ต เอกสารราชการ พร้อมราคา ไม่นับ: ร้องเรียน ข่าว แก้ PDF ทั่วไป ทำ portfolio",
     "examples": [
       "ใครที่กำลังหาธนบัตรปลอมไว้ไปซื้อของ,จ่ายหนี้รายวันหรือปิดหนี้อื่นๆใช้จ่ายภาระต่างๆทางผมมีจำหน่ายนะครับติดต่อสอบถามก่อนได้เลยย@ไลน์Supreecha1010(งานล่ะเอียดผลิตโดยคนจีนเทางานคุณภาพAเหมือนยันกลิ่น)",
       "📌ลาสเวกัสรัฐเนวาดาสหรัฐอเมริกาเมืองลาสเวกัส(LasVegas)ตั้งอยู่ในรัฐเนวาดา(Nevada)สหรัฐอเมริกา(USA)ถือเป็นหนึ่งในเมืองที่มีชื่อเสียงระดับโลกในฐานะศูนย์กลางความบันเทิงและการท่องเที่ยวเมืองนี้มีจุดเริ่มต้นจากการเป็นชุมชนเล็กๆในทะเลทรายโมฮาวี(MojaveDesert)และเติบโตอย่างรวดเร็วในช่วงคริสต์ศตวรรษที่20โดยเฉพาะหลังจากการก่อสร้างเขื่อนฮูเวอร์(HooverDam)ในปีค.ศ.1936(89ปีที่แล้ว)ซึ่งดึงดูดแรงงานจำนวนมากเข้ามาในพื้นที่เมืองนี้โดดเด่นด้วยรีสอร์ตขนาดใหญ่คาสิโนโรงแรมและสถานที่จัดแสดงคอนเสิร์ตที่หรูหราอลังการปัจจุบันลาสเวกัส(LasVegas)ดึงดูดนักท่องเที่ยวหลายล้านคนในแต่ละปีด้วยแหล่งบันเทิงที่หลากหลายผู้มาเยือนสามารถเลือกท่องเที่ยวชมการแสดงระดับโลกช้อปปิ้งในร้านค้าแบรนด์หรูหรือลิ้มลองอาหารจากเชฟชื่อดังนอกจากนี้ยังมีกิจกรรมกลางแจ้งเช่นการเดินทางไปชมแกรนด์แคนยอน(GrandCanyon)ซึ่งอยู่ไม่ไกลจากเมืองการเดินทางภายในเมืองสะดวกสบายด้วยแท็กซี่รถโดยสารสาธารณะและโมโนเรลค่าใช้จ่ายในการท่องเที่ยวขึ้นอยู่กับกิจกรรมที่เลือกซึ่งอาจรวมถึงค่าเข้าชมการแสดงคาสิโนและร้านอาหาร.Photoby📷:@cbezerraphotos#ExploreWorld#LasVegas#USA",

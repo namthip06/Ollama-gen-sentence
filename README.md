@@ -70,10 +70,10 @@ Output (`data/synthetic.jsonl`):
 | File | Purpose |
 |---|---|
 | `generate.py` | Interactive generator (menus, Ollama calls, JSONL output) |
-| `categories.json` | Per-category definitions: rules, example sentences, style hints |
-| `prompts.txt` | Prompt template with `{category_name}`, `{rules}`, `{examples}`, `{seed}`, `{n}` placeholders |
+| `categories.json` | Per-category guideline (English: definition, qualifies, does_not_qualify, labeled examples) + Thai example sentences and style hints |
+| `prompts.txt` | Prompt template with `{category_name}`, `{definition}`, `{qualifies}`, `{does_not_qualify}`, `{labeled_examples}`, `{examples}`, `{seed}`, `{n}` placeholders |
 | `category.md` | Original labeling guide (reference only — edit to re-derive categories) |
 | `SPEC.md` | Project specification |
 | `tasks/` | Implementation plan and task list |
 
-To adjust generation quality, edit `prompts.txt` (the prompt wording) or `categories.json` (the rules and style hints per category) — no code changes needed.
+To adjust generation quality, edit `prompts.txt` (the prompt wording) or `categories.json` (the guideline and style hints per category) — no code changes needed.

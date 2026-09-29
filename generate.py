@@ -17,9 +17,10 @@ OLLAMA_URL = "http://localhost:11434/api/generate"
 BASE_DIR = Path(__file__).parent
 DEFAULT_OUT = "data/synthetic.jsonl"
 BATCH_SIZE = 10
-DEFAULT_N = 20
-DEFAULT_PARALLEL = 2
+DEFAULT_N = 1000
+DEFAULT_PARALLEL = 1
 DEFAULT_EXAMPLES = 5
+DEFAULT_TEMPERATURE = 0.9
 
 
 def load_examples(cat: dict, k: int) -> list[str]:
@@ -36,23 +37,29 @@ def load_template(path: Path) -> str:
 
 
 def build_prompt(template: str, cat: dict, seed: str, n: int, examples: list[str]) -> str:
+    labeled = "\n".join(
+        f'- [{e["label"]}] "{e["text"]}" — {e["reason"]}'
+        for e in cat["labeled_examples"])
     return template.format(
         category_name=cat["name"],
-        rules=cat["rules"],
+        definition=cat["definition"],
+        qualifies="\n".join("- " + q for q in cat["qualifies"]),
+        does_not_qualify="\n".join("- " + q for q in cat["does_not_qualify"]),
+        labeled_examples=labeled,
         examples="\n".join("- " + e for e in examples),
         seed=seed,
         n=n,
     )
 
 
-def call_ollama(prompt: str, model: str) -> str:
+def call_ollama(prompt: str, model: str, temperature: float) -> str:
     payload = json.dumps({
         "model": model,
         "prompt": prompt,
         "stream": False,
         "think": False,
         "format": "json",
-        "options": {"num_gpu": 999, "temperature": 0.9},
+        "options": {"num_gpu": 999, "temperature": temperature},
     }).encode()
     req = urllib.request.Request(OLLAMA_URL, data=payload,
                                  headers={"Content-Type": "application/json"})
@@ -115,6 +122,17 @@ def ask_str(prompt: str, default: str) -> str:
     return raw or default
 
 
+def ask_float(prompt: str, default: float, lo: float, hi: float) -> float:
+    raw = input(f"{prompt} [{default}]: ").strip()
+    if not raw:
+        return default
+    try:
+        val = float(raw)
+    except ValueError:
+        return default
+    return min(max(val, lo), hi)
+
+
 def pick_categories(categories: dict) -> list[str]:
     keys = sorted(categories, key=int)
     print("\nหมวดที่สร้างได้:")
@@ -132,7 +150,7 @@ def pick_categories(categories: dict) -> list[str]:
 
 def run_category(template: str, categories: dict, cat_key: str, model: str,
                  n: int, parallel: int, round_size: int, n_examples: int,
-                 out_path: Path) -> int:
+                 temperature: float, out_path: Path) -> int:
     cat = categories[cat_key]
     total = 0
     batches = [min(BATCH_SIZE, n - i) for i in range(0, n, BATCH_SIZE)]
@@ -146,7 +164,7 @@ def run_category(template: str, categories: dict, cat_key: str, model: str,
                + f" (รูปแบบที่ {attempt})"
         prompt = build_prompt(template, cat, seed, size,
                               load_examples(cat, n_examples))
-        return parse_sentences(call_ollama(prompt, model))
+        return parse_sentences(call_ollama(prompt, model, temperature))
 
     gpu_checked = False
     attempt = 0
@@ -187,10 +205,12 @@ def self_check() -> int:
                      load_examples(categories["1"], 3))
     for var in ("Gambling", "ทดสอบ"):
         assert var in p, f"template var missing: {var}"
+    for field in ("definition", "qualifies", "does_not_qualify", "labeled_examples"):
+        assert categories["1"].get(field), f"categories field missing: {field}"
     assert categories["1"]["examples"], "examples ว่าง — รัน populate ก่อน"
     print("categories.json + prompts.txt OK")
     try:
-        r = call_ollama("ตอบสั้นๆ: 1+1=?", list_models()[0])
+        r = call_ollama("ตอบสั้นๆ: 1+1=?", list_models()[0], DEFAULT_TEMPERATURE)
         print("Ollama OK:", r.strip()[:50])
     except SystemExit as e:
         print(f"Ollama FAIL: {e}")
@@ -229,19 +249,24 @@ def main() -> None:
         keys = pick_categories(categories)
         n = ask_int("จำนวนประโยคต่อหมวด", DEFAULT_N)
         parallel = ask_int("จำนวน parallel request", DEFAULT_PARALLEL)
-        round_size = ask_int("ประโยคต่อรอบ (เซฟทุก batch ในรอบ)", 100)
+        round_size = ask_int("ประโยคต่อรอบ (เซฟทุก batch ในรอบ)", 10)
         n_examples = ask_int("ประโยคตัวอย่างใน prompt", DEFAULT_EXAMPLES)
+        print("  temperature: 0 = คงที่/เคร่งครัมมาก (มักซ้ำเดิม) · "
+              "1 = หลากหลาย สร้างสรรค์ (แนะนำสำหรับงานนี้) · >1 อาจเพี้ยน")
+        temperature = ask_float("temperature", DEFAULT_TEMPERATURE, 0.0, 2.0)
         out_path = Path(ask_str("ไฟล์ output", DEFAULT_OUT))
 
         print(f"\nสรุป: model={model} หมวด={','.join(keys)} n={n}/หมวด "
-              f"parallel={parallel} round={round_size} examples={n_examples} out={out_path}")
+              f"parallel={parallel} round={round_size} examples={n_examples} "
+              f"temperature={temperature} out={out_path}")
         if input("เริ่ม generate? (y/n): ").strip().lower() != "y":
             continue
 
         out_path.parent.mkdir(parents=True, exist_ok=True)
         for k in keys:
             grand += run_category(template, categories, k, model, n,
-                                  parallel, round_size, n_examples, out_path)
+                                  parallel, round_size, n_examples,
+                                  temperature, out_path)
         break
     print(f"\nเสร็จสิ้น รวม {grand} ประโยค")
 
