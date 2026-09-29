@@ -81,7 +81,15 @@ def parse_sentences(response: str) -> list[str]:
             return []
     if isinstance(data, dict):
         data = next((v for v in data.values() if isinstance(v, list)), [])
-    return [s for s in data if isinstance(s, str) and s.strip()]
+    out = []
+    for s in data:
+        if not isinstance(s, str) or not s.strip():
+            continue
+        # โมเดลบางตัวหลุด lone surrogate (เขียน utf-8 ไม่ได้) — ตัดทิ้ง
+        s = s.encode("utf-8", errors="ignore").decode("utf-8").strip()
+        if s:
+            out.append(s)
+    return out
 
 
 def check_gpu(model: str) -> str:
